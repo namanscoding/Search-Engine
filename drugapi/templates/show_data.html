@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <style>
+        body {
+            margin: auto;
+            font-family: sans-serif;
+            
+            background-color: floralwhite;
+        }
+
+        .center {
+            margin: auto;
+            width: 60%;
+            padding: 10px;
+        }
+
+        .textcenter {
+            text-align: center;
+        }
+
+        input {
+            font-size: 30px;
+            border-radius: 15px;
+            background-color: ;
+        }
+
+        button {
+            font-size: 20px;
+            border-radius: 10px;
+            background-color: skyblue;
+        }
+
+        button:hover {
+            background-color: cyan;
+        }
+    </style>
+    
+    <title>{{info['generic_name']}}</title>
+</head>
+
+<body class="center">
+<a href="{{url_for('welcome')}}">back to home</a>
+    <table class="table table-bordered">
+        <tr>
+            <td>Generic_name
+            </td>
+            <td>{{info['generic_name']}}
+            </td>
+        </tr>
+        <tr>
+            <td>Chemical_Formula
+            </td>
+            <td>{% for i in info['chemical_formula'] %}
+            {% if i.isdigit() %}
+            <sub>{{i}}</sub>
+            {% else %}
+            {{i}}
+            {% endif %}
+            {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td>Synonyms
+            </td>
+            <td>{% for i in info['synonyms'] %}{{i}},&nbsp;
+            {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td>Brand_Names
+            </td>
+            <td>{% for i in info['brand_names'] %}{{i}},&nbsp;
+            {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td>Indications
+            </td>
+            <td>{{info['indication']}}
+            </td>
+        </tr>
+        
+    </table>
+</body>
+
+</html>
